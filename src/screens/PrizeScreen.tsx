@@ -5,11 +5,13 @@ import './screens.css'
 
 interface Props {
   onRestart: () => void
+  muted: boolean
+  onToggleMute: () => void
 }
 
-export function PrizeScreen({ onRestart }: Props) {
+export function PrizeScreen({ onRestart, muted, onToggleMute }: Props) {
   return (
-    <GameFrame title={PRIZE.title}>
+    <GameFrame title={PRIZE.title} muted={muted} onToggleMute={onToggleMute}>
       <div className="panel panel--prize">
         <div className="prize-art">
           <CharacterSprite characterId="coral" variant="pamper" />

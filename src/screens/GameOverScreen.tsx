@@ -7,12 +7,19 @@ import './screens.css'
 interface Props {
   reason: DefeatReason
   onRestart: () => void
+  muted: boolean
+  onToggleMute: () => void
 }
 
-export function GameOverScreen({ reason, onRestart }: Props) {
+export function GameOverScreen({
+  reason,
+  onRestart,
+  muted,
+  onToggleMute,
+}: Props) {
   const ending = ENDINGS[reason]
   return (
-    <GameFrame title="Obra paralizada">
+    <GameFrame title="Obra paralizada" muted={muted} onToggleMute={onToggleMute}>
       <div className="panel panel--danger">
         <p className="panel__eyebrow">Game over</p>
         <EndingArt reason={reason} />

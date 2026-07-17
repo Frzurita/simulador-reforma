@@ -3,11 +3,13 @@ import './screens.css'
 
 interface Props {
   onStart: () => void
+  muted: boolean
+  onToggleMute: () => void
 }
 
-export function IntroScreen({ onStart }: Props) {
+export function IntroScreen({ onStart, muted, onToggleMute }: Props) {
   return (
-    <GameFrame>
+    <GameFrame muted={muted} onToggleMute={onToggleMute}>
       <div className="panel">
         <p className="panel__eyebrow">Cumpleaños de Coral</p>
         <h2 className="panel__heading">La casa no se reforma sola</h2>

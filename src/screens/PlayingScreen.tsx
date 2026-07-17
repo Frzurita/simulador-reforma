@@ -9,9 +9,11 @@ import './screens.css'
 interface Props {
   state: GameState
   onChoose: (side: 'left' | 'right') => void
+  muted: boolean
+  onToggleMute: () => void
 }
 
-export function PlayingScreen({ state, onChoose }: Props) {
+export function PlayingScreen({ state, onChoose, muted, onToggleMute }: Props) {
   const card = state.deck[state.cardIndex]
   const [side, setSide] = useState<'left' | 'right' | null>(null)
   const [preview, setPreview] = useState<ReturnType<
@@ -21,7 +23,7 @@ export function PlayingScreen({ state, onChoose }: Props) {
   if (!card) return null
 
   return (
-    <GameFrame>
+    <GameFrame muted={muted} onToggleMute={onToggleMute}>
       <ResourceBars
         resources={state.resources}
         preview={preview ?? undefined}
