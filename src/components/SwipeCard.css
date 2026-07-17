@@ -1,0 +1,145 @@
+.swipe-stage {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.choice-hint {
+  position: absolute;
+  top: 28%;
+  z-index: 2;
+  max-width: 120px;
+  padding: 8px 10px;
+  background: #f7f1e6;
+  border: 3px solid #5c4a32;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #3d2e1e;
+  pointer-events: none;
+  text-align: center;
+}
+
+.choice-hint--left {
+  left: 0;
+  transform: rotate(-6deg);
+  border-color: #8b3a3a;
+  color: #8b3a3a;
+}
+
+.choice-hint--right {
+  right: 0;
+  transform: rotate(6deg);
+  border-color: #2e7d4f;
+  color: #2e7d4f;
+}
+
+.card {
+  width: min(100%, 340px);
+  background: linear-gradient(180deg, #fbf6ee 0%, #f0e6d6 100%);
+  border: 4px solid #5c4a32;
+  box-shadow:
+    6px 6px 0 #3d2e1e,
+    inset 0 0 0 2px #d9cbb8;
+  padding: 16px 16px 12px;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.card__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: #3d2e1e;
+}
+
+.card__role {
+  margin: 2px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a654c;
+}
+
+.card__art {
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(139, 115, 85, 0.2), transparent 55%),
+    linear-gradient(#0000 72%, #d9cbb8 72%),
+    repeating-linear-gradient(
+      90deg,
+      #efe4d2 0 10px,
+      #e8dcc8 10px 20px
+    );
+  border: 2px solid #c4b198;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  margin: 8px 0 12px;
+  overflow: hidden;
+}
+
+.card__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #2f2418;
+  text-align: center;
+  min-height: 4.5em;
+}
+
+.card__actions {
+  display: none;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.card__btn {
+  flex: 1;
+  border: 2px solid #5c4a32;
+  background: #efe4d2;
+  color: #3d2e1e;
+  font-size: 11px;
+  line-height: 1.3;
+  padding: 8px 6px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.card__btn--left:hover {
+  background: #f3d6d6;
+}
+
+.card__btn--right:hover {
+  background: #d6ebd9;
+}
+
+.card__swipe-tip {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: #8a7560;
+}
+
+@media (hover: none), (max-width: 640px) {
+  .card__actions {
+    display: flex;
+  }
+
+  .card__swipe-tip {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+.sprite {
+  width: 180px;
+  height: 190px;
+  display: grid;
+  place-items: center;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.sprite--float {
+  animation: sprite-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes sprite-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.pixel-svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(3px 4px 0 rgba(61, 46, 30, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprite--float {
+    animation: none;
+  }
+}
