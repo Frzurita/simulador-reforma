@@ -104,3 +104,27 @@
   line-height: 1.55;
   color: #3d2e1e;
 }
+
+.prize-message--short {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.prize-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 8px 0 16px;
+}
+
+.prize-hint {
+  margin: 0;
+  font-size: 12px;
+  color: #8a7560;
+}
+
+.prize-both {
+  margin-top: 8px;
+}
+

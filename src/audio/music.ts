@@ -15,8 +15,15 @@ class ReformaMusic {
   private readonly melodyPlay = [262, 294, 330, 392, 440, 392, 330, 294]
   private readonly bassPlay = [131, 131, 147, 147, 165, 165, 147, 131]
 
-  private readonly melodyPrize = [523, 659, 784, 1047, 784, 659, 587, 523]
-  private readonly bassPrize = [196, 196, 247, 247, 262, 262, 247, 196]
+  /** Victoria: mayor brillante, loop más largo (16 tiempos) */
+  private readonly melodyPrize = [
+    523, 587, 659, 784, 880, 784, 659, 587, 659, 784, 988, 1047, 1175, 1047, 880,
+    784,
+  ]
+  private readonly bassPrize = [
+    196, 196, 247, 247, 262, 262, 294, 294, 262, 262, 247, 247, 220, 220, 196,
+    196,
+  ]
 
   private readonly melodyOver = [392, 370, 349, 330, 311, 294, 277, 262]
   private readonly bassOver = [98, 98, 92, 92, 87, 87, 82, 82]
@@ -51,7 +58,7 @@ class ReformaMusic {
     this.clearTimer()
     if (mood === 'prize') {
       this.playVictoryStinger()
-      this.pendingDelay = 0.95
+      this.pendingDelay = 1.35
     } else if (mood === 'gameover') {
       this.playSadStinger()
       this.pendingDelay = 1.25
@@ -108,12 +115,14 @@ class ReformaMusic {
   private playVictoryStinger() {
     if (!this.ctx) return
     const t0 = this.ctx.currentTime + 0.02
-    ;[523, 659, 784, 1047].forEach((f, i) => {
-      this.tone(f, t0 + i * 0.12, 0.28, 'square', 0.22)
-      this.tone(f / 2, t0 + i * 0.12, 0.3, 'triangle', 0.2)
+    ;[523, 659, 784, 988, 1175].forEach((f, i) => {
+      this.tone(f, t0 + i * 0.1, 0.26, 'square', 0.24)
+      this.tone(f / 2, t0 + i * 0.1, 0.28, 'triangle', 0.2)
     })
-    this.tone(1047, t0 + 0.5, 0.55, 'square', 0.18)
-    this.tone(1319, t0 + 0.5, 0.55, 'triangle', 0.12)
+    this.tone(1568, t0 + 0.55, 0.2, 'square', 0.14)
+    this.tone(1319, t0 + 0.7, 0.55, 'square', 0.2)
+    this.tone(1047, t0 + 0.7, 0.6, 'triangle', 0.16)
+    this.tone(784, t0 + 0.7, 0.65, 'triangle', 0.12)
   }
 
   private playSadStinger() {
@@ -129,7 +138,7 @@ class ReformaMusic {
     if (!this.ctx) return
 
     const beat =
-      this.mood === 'prize' ? 0.22 : this.mood === 'gameover' ? 0.42 : 0.28
+      this.mood === 'prize' ? 0.2 : this.mood === 'gameover' ? 0.42 : 0.28
     const delay = this.pendingDelay
     this.pendingDelay = 0
     const now = this.ctx.currentTime + delay
@@ -148,14 +157,16 @@ class ReformaMusic {
           ? this.bassOver
           : this.bassPlay
 
+    const steps = melody.length
     const leadType: OscillatorType =
       this.mood === 'gameover' ? 'sine' : 'square'
-    const leadGain = this.mood === 'gameover' ? 0.22 : 0.16
+    const leadGain =
+      this.mood === 'prize' ? 0.2 : this.mood === 'gameover' ? 0.22 : 0.16
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < steps; i++) {
       const t = now + i * beat
-      const m = melody[i % melody.length]
-      const b = bass[i % bass.length]
+      const m = melody[i % melody.length]!
+      const b = bass[i % bass.length]!
       this.tone(
         b,
         t,
@@ -166,18 +177,24 @@ class ReformaMusic {
       this.tone(
         m,
         t,
-        beat * (this.mood === 'gameover' ? 0.85 : 0.55),
+        beat * (this.mood === 'gameover' ? 0.85 : 0.5),
         leadType,
         leadGain,
       )
-      if (this.mood === 'prize' && i % 2 === 0) {
-        this.tone(m * 2, t + beat * 0.45, beat * 0.22, 'square', 0.07)
+      if (this.mood === 'prize') {
+        // Saltitos alegres en corcheas
+        if (i % 2 === 0) {
+          this.tone(m * 2, t + beat * 0.5, beat * 0.2, 'square', 0.09)
+        }
+        if (i % 4 === 3) {
+          this.tone(m * 1.5, t + beat * 0.25, beat * 0.18, 'triangle', 0.1)
+        }
       }
     }
 
     this.timer = window.setTimeout(
       () => this.schedule(),
-      (delay + 8 * beat) * 1000 - 30,
+      (delay + steps * beat) * 1000 - 30,
     )
   }
 }

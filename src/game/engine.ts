@@ -6,12 +6,24 @@ import type {
   GameState,
   Resources,
   Screen,
+  Stage,
 } from '../data/types'
 
 export const INITIAL_RESOURCES: Resources = {
   presupuesto: 70,
-  progreso: 15,
+  progreso: 20,
   cordura: 75,
+}
+
+/** Cupos por etapa (24) + carta final = 25 cartas por partida */
+const STAGE_QUOTA: Record<Exclude<Stage, 'final'>, number> = {
+  planos: 3,
+  demolicion: 4,
+  bano: 3,
+  cocina: 4,
+  suelo: 3,
+  ventanas: 3,
+  imprevistos: 4,
 }
 
 function shuffle<T>(items: T[]): T[] {
@@ -23,13 +35,45 @@ function shuffle<T>(items: T[]): T[] {
   return arr
 }
 
+function pickN<T>(items: T[], n: number): T[] {
+  return shuffle(items).slice(0, Math.min(n, items.length))
+}
+
+/** Si no salió Emilio, cuela al menos una de sus cartas (misma etapa si puede). */
+function ensureEmilio(deck: GameCard[]): void {
+  if (deck.some((c) => c.character === 'emilio')) return
+
+  const emilios = CARDS.filter((c) => c.character === 'emilio')
+  if (emilios.length === 0) return
+
+  const emilio = emilios[Math.floor(Math.random() * emilios.length)]!
+  const sameStageIdx = deck.findIndex(
+    (c) => c.stage === emilio.stage && c.stage !== 'final',
+  )
+  if (sameStageIdx >= 0) {
+    deck[sameStageIdx] = emilio
+    return
+  }
+
+  const anyIdx = deck.findIndex((c) => c.stage !== 'final')
+  if (anyIdx >= 0) deck[anyIdx] = emilio
+}
+
 export function buildDeck(): GameCard[] {
-  const byStage = STAGE_ORDER.flatMap((stage) => {
-    const stageCards = CARDS.filter((c) => c.stage === stage)
-    if (stage === 'final') return stageCards
-    return shuffle(stageCards)
-  })
-  return byStage
+  const deck: GameCard[] = []
+
+  for (const stage of STAGE_ORDER) {
+    if (stage === 'final') {
+      deck.push(...CARDS.filter((c) => c.stage === 'final'))
+      continue
+    }
+
+    const pool = CARDS.filter((c) => c.stage === stage)
+    deck.push(...pickN(pool, STAGE_QUOTA[stage]))
+  }
+
+  ensureEmilio(deck)
+  return deck
 }
 
 export function createInitialState(): GameState {

@@ -1,15 +1,3 @@
-export const PRIZE = {
-  title: 'Reforma completada',
-  message: `Coral,
-
-Has sobrevivido a planos imposibles, maineles rebeldes y a los 20 eurillos.
-
-Esta obra también era para ti: una sesión de neuromoduladores, para que te mimes un rato sin pensar en desagües ni presupuestos.
-
-Te quiero.
-— Fran`,
-}
-
 export const ENDINGS = {
   presupuesto: {
     title: 'Presupuesto a cero',

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Nunito+Sans:wght@400;600;700&family=Pixelify+Sans:wght@400;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap');
 
 :root {
   --font-display: 'Pixelify Sans', 'Courier New', monospace;
@@ -8,7 +8,6 @@
   --paper: #f5ecdc;
   --bg: #cbb89a;
   color: var(--ink);
-  background: var(--bg);
   font-family: var(--font-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,6 +30,14 @@ body,
 
 body {
   min-height: 100dvh;
+  background: #eadfce;
+}
+
+/* Estética de obra solo dentro del juego */
+.game-root {
+  min-height: 100dvh;
+  color: var(--ink);
+  font-family: var(--font-body);
   background:
     radial-gradient(ellipse at top, #d9cbb8 0%, transparent 55%),
     repeating-linear-gradient(

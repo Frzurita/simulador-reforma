@@ -405,6 +405,316 @@ export const CARDS: GameCard[] = [
     },
   },
 
+  // —— Nuevas: perros, familia, amigas y caos de obra ——
+  {
+    id: 'perros-nivel-laser',
+    character: 'perros',
+    stage: 'suelo',
+    text: 'Chewie y Tyrion han enterrado el nivel láser en el saco de arena de la obra.',
+    left: {
+      label: 'Excavación arqueológica',
+      effects: { presupuesto: -4, progreso: 2, cordura: -6 },
+    },
+    right: {
+      label: 'Compramos otro y fingimos',
+      effects: { presupuesto: -8, cordura: 4 },
+    },
+  },
+  {
+    id: 'perros-pladur-sofa',
+    character: 'perros',
+    stage: 'demolicion',
+    text: 'Uno ha decidido que el rollo de pladur es su nuevo sofá real.',
+    left: {
+      label: 'Negociación con snack',
+      effects: { cordura: 5, progreso: -1 },
+    },
+    right: {
+      label: 'Guerra santa por el pladur',
+      effects: { cordura: -10, progreso: 1 },
+    },
+  },
+  {
+    id: 'perros-reunion-jesus',
+    character: 'perros',
+    stage: 'planos',
+    text: 'Aparecen en la reunión con Jesús… con bigote de polvo de yeso.',
+    left: {
+      label: 'Son la nueva firma del estudio',
+      effects: { cordura: 6, progreso: 2 },
+    },
+    right: {
+      label: 'Sacarlos YA',
+      effects: { cordura: -3, presupuesto: -2 },
+    },
+  },
+  {
+    id: 'perros-marcar-suelo',
+    character: 'perros',
+    stage: 'suelo',
+    text: 'Han “aprobado” el suelo: lo han marcado. Literalmente.',
+    left: {
+      label: 'Limpieza de emergencia',
+      effects: { presupuesto: -6, cordura: -8, progreso: 1 },
+    },
+    right: {
+      label: 'Lo vendemos como “patina industrial”',
+      effects: { cordura: -15, progreso: 3 },
+    },
+  },
+  {
+    id: 'abraham-primo',
+    character: 'abraham',
+    stage: 'imprevistos',
+    text: 'Abraham trae un presupuesto “de un primo que lo hace igual de bien”.',
+    left: {
+      label: 'Sonreír y archivar',
+      effects: { cordura: -4 },
+    },
+    right: {
+      label: 'Pedir detalles… error',
+      effects: { cordura: -12, presupuesto: 5, progreso: -3 },
+    },
+  },
+  {
+    id: 'abraham-metro',
+    character: 'abraham',
+    stage: 'bano',
+    text: 'Quiere medir él mismo el baño “porque el metro del albañil miente”.',
+    left: {
+      label: 'Dale el metro de juguete',
+      effects: { cordura: 4, progreso: 1 },
+    },
+    right: {
+      label: 'Que mida en serio',
+      effects: { progreso: -4, cordura: -6 },
+    },
+  },
+  {
+    id: 'mi-vestidor-luz',
+    character: 'mariaisabel',
+    stage: 'bano',
+    text: 'Mª Isabel: ese vestidor necesita más luz… y una butaca… y una planta.',
+    left: {
+      label: 'Aceptar la ampliación familiar',
+      effects: { presupuesto: -10, progreso: 4, cordura: -5 },
+    },
+    right: {
+      label: 'Gracias, mamá, eso es para más adelante',
+      effects: { cordura: 3, progreso: -2 },
+    },
+  },
+  {
+    id: 'mi-mainel-personalidad',
+    character: 'mariaisabel',
+    stage: 'ventanas',
+    text: 'Dice que el mainel torcido “le da personalidad a la casa”.',
+    left: {
+      label: 'Personalidad = no',
+      effects: { cordura: 5, progreso: 1 },
+    },
+    right: {
+      label: 'Le haces caso dos segundos',
+      effects: { cordura: -10 },
+    },
+  },
+  {
+    id: 'suegros-solo-mirar',
+    character: 'abraham',
+    stage: 'imprevistos',
+    text: 'Abraham y Mª Isabel llegan “solo a mirar” con tortilla, opiniones y un primo albañil en el móvil.',
+    left: {
+      label: 'Café y límites claros',
+      effects: { cordura: -6, progreso: 2 },
+    },
+    right: {
+      label: 'Visita express de cuatro horas',
+      effects: { cordura: -14, presupuesto: -3 },
+    },
+  },
+  {
+    id: 'gema-papel-marmol',
+    character: 'gema',
+    stage: 'cocina',
+    text: 'Gema propone un papel pintado “que parece mármol pero queda más moderno”.',
+    left: {
+      label: 'Modernidad aceptada',
+      effects: { presupuesto: -9, progreso: 5, cordura: -3 },
+    },
+    right: {
+      label: 'Mármol de verdad o nada',
+      effects: { presupuesto: -12, cordura: 2 },
+    },
+  },
+  {
+    id: 'gema-tiktok-72h',
+    character: 'gema',
+    stage: 'imprevistos',
+    text: 'Gema enseña un vídeo de una reforma hecha en 72 horas. “Si ellos pueden…”',
+    left: {
+      label: 'Cerrar el móvil con cariño',
+      effects: { cordura: 8 },
+    },
+    right: {
+      label: 'Caer en la espiral',
+      effects: { cordura: -12, progreso: -2 },
+    },
+  },
+  {
+    id: 'pili-zona-crisis',
+    character: 'pili',
+    stage: 'cocina',
+    text: 'Pili pregunta si al abrir la cocina al salón queda sitio para “una zona de crisis con manta”.',
+    left: {
+      label: 'Diseñar rincón emocional',
+      effects: { presupuesto: -5, cordura: 10 },
+    },
+    right: {
+      label: 'El coche sigue disponible',
+      effects: { cordura: 4 },
+    },
+  },
+  {
+    id: 'pili-anti-emilio',
+    character: 'pili',
+    stage: 'imprevistos',
+    text: 'Pili: “Si Emilio vuelve a aparecer, yo llamo a alguien”.',
+    left: {
+      label: 'Pacto anti-Emilio',
+      effects: { cordura: 6, progreso: 1 },
+    },
+    right: {
+      label: 'Diplomacia suave',
+      effects: { cordura: -2, presupuesto: 3 },
+    },
+  },
+  {
+    id: 'gema-pili-pintar',
+    character: 'gema',
+    stage: 'demolicion',
+    text: 'Gema y Pili quieren venir a “ayudar a pintar” un sábado. Spoiler: traen vino.',
+    left: {
+      label: 'Sábado artístico',
+      effects: { presupuesto: 8, progreso: 4, cordura: -10 },
+    },
+    right: {
+      label: 'Invitadas a cenar, no a pintar',
+      effects: { cordura: 5, progreso: -1 },
+    },
+  },
+  {
+    id: 'jesus-vestidor-90',
+    character: 'jesus',
+    stage: 'planos',
+    text: 'Nueva planimetría: el vestidor ahora “mira al futuro” (está girado 90°).',
+    left: {
+      label: 'Jesús, por favor',
+      effects: { cordura: 2, progreso: -2 },
+    },
+    right: {
+      label: 'Futurismo total',
+      effects: { progreso: 7, cordura: -11, presupuesto: -6 },
+    },
+  },
+  {
+    id: 'eugenio-cable-fantasma',
+    character: 'eugenio',
+    stage: 'demolicion',
+    text: 'Eugenio encuentra un cable “que no debería existir” detrás del tabique.',
+    left: {
+      label: 'Parar y revisar',
+      effects: { presupuesto: -7, progreso: -3, cordura: 5 },
+    },
+    right: {
+      label: 'Aislar y rezar',
+      effects: { progreso: 6, cordura: -9 },
+    },
+  },
+  {
+    id: 'ventanas-color-sorpresa',
+    character: 'ventanas',
+    stage: 'ventanas',
+    text: 'Las persianas llegan… en un color que nadie pidió.',
+    left: {
+      label: 'Reclamación épica',
+      effects: { progreso: -2, cordura: -5, presupuesto: 4 },
+    },
+    right: {
+      label: '“Es el nuevo beige”',
+      effects: { cordura: -12, progreso: 3 },
+    },
+  },
+  {
+    id: 'cocinas-fe',
+    character: 'cocinas',
+    stage: 'cocina',
+    text: 'El chico de cocinas propone una encimera que “se limpia sola con fe”.',
+    left: {
+      label: 'La fe no es un acabado',
+      effects: { cordura: 3 },
+    },
+    right: {
+      label: 'Compramos el milagro',
+      effects: { presupuesto: -14, progreso: 6, cordura: -4 },
+    },
+  },
+  {
+    id: 'marmol-con-historia',
+    character: 'marmolista',
+    stage: 'cocina',
+    text: 'El marmolista ofrece un retal “con historia” (la historia es una grieta).',
+    left: {
+      label: 'Historia rechazada',
+      effects: { presupuesto: -8, cordura: 2 },
+    },
+    right: {
+      label: 'Pieza con alma',
+      effects: { presupuesto: 6, cordura: -14, progreso: 2 },
+    },
+  },
+  {
+    id: 'fran-cuartel-postits',
+    character: 'fran',
+    stage: 'imprevistos',
+    text: 'Fran sugiere montar el cuartel general de la reforma en el salón… con post-its de colores.',
+    left: {
+      label: 'Cuartel activado',
+      effects: { progreso: 5, cordura: -8, presupuesto: -2 },
+    },
+    right: {
+      label: 'Una aplicación y a vivir',
+      effects: { cordura: 6, progreso: 2 },
+    },
+  },
+  {
+    id: 'fran-youtube-albanil',
+    character: 'fran',
+    stage: 'demolicion',
+    text: 'Fran: “He visto un tío en YouTube que tira un tabique en 8 minutos. Yo también puedo.”',
+    left: {
+      label: 'Le quitas la maza con amor',
+      effects: { cordura: 8, progreso: -1 },
+    },
+    right: {
+      label: 'Dale… pero filmamos',
+      effects: { progreso: 6, cordura: -14, presupuesto: -5 },
+    },
+  },
+  {
+    id: 'fran-descuento-por-sonreir',
+    character: 'fran',
+    stage: 'imprevistos',
+    text: 'Fran está convencido de que si invita a cañas al proveedor, “sale un descuentazo”.',
+    left: {
+      label: 'Cañas y carisma',
+      effects: { presupuesto: 10, cordura: -4, progreso: 2 },
+    },
+    right: {
+      label: 'Mejor un email seco',
+      effects: { presupuesto: 4, cordura: 3 },
+    },
+  },
+
   // —— Carta final ——
   {
     id: 'final-obra',
