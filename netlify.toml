@@ -1,0 +1,5 @@
+# SPA: todas las rutas sirven index.html (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
