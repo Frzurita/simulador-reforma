@@ -1,4 +1,5 @@
 import type { Resources } from '../data/types'
+import { SHOW_BAR_DELTAS } from '../config/flags'
 import './ResourceBars.css'
 
 interface Props {
@@ -20,7 +21,8 @@ function Bar({
   delta?: number
   side?: 'left' | 'right' | null
 }) {
-  const showDelta = side && delta !== undefined && delta !== 0
+  const showDelta =
+    SHOW_BAR_DELTAS && side && delta !== undefined && delta !== 0
   return (
     <div className="bar">
       <div className="bar__meta">
